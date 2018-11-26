@@ -1,0 +1,200 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Graficos Invernaderos</title>
+  <!-- including FusionCharts core package JS files -->
+  <script src="https://static.fusioncharts.com/code/latest/fusioncharts.js"></script>
+  <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
+  <link rel="stylesheet" href="assets/css/main.css">
+
+  <!-- including Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-database.js"></script>
+  <script src="assets/scripts/app.js"></script>
+  <script>
+    window.addEventListener("load", getData(genFunction));
+
+    function getData(callbackIN) {
+      var ref = firebase.database().ref('invernaderos');
+      ref.once('value').then(function (snapshot) {
+        callbackIN(snapshot.val())
+      });
+    }
+
+    function genFunction(data) {
+	  var ref=data[5555]
+      var clabel = [];
+      var cdata1 = [];
+      var cdata2 = [];
+      var cdata3 = [];
+      var len = ref.length;
+      for(var i=1; i<len; i++) {
+		clabel.push({
+          label: ref[i]['fecha']
+        });
+		cdata1.push({
+          value: ref[i]['humedadaire']
+        });
+		cdata2.push({
+          value: ref[i]['temperatura']
+        });
+		cdata3.push({
+          value: ref[i]['humedadsuelo']
+        });
+      }
+	  
+
+
+    var firebaseChart = new FusionCharts({
+        type: "zoomlinedy",
+        renderAt: "chart1-container",
+		width: '100%',
+		height: '500',
+        dataFormat: 'json',
+        dataSource: {
+            "chart": {
+                "caption": "Invernadero 1",
+				"subcaption": "Click & drag on the plot area to zoom & then scroll",
+				"pYAxisName": "Humedad",
+				"pYAxisMaxValue": "100",
+				"pYAxisMinValue": "0",
+				"sYAxisName": "Temperatura",
+				"xaxisname": "Fecha",
+				"forceaxislimits": "1",
+				"pixelsperpoint": "0",
+				"pixelsperlabel": "30",
+				"compactdatamode": "1",
+				"numberSuffix": "%",				
+				"snumberSuffix": "°C",
+				"dataseparator": "|",
+				"theme": "fusion",
+				"bgImage":"https://i.imgur.com/hY3D8qN.png"
+            },
+            "categories": [
+			{
+			  "category": clabel
+			}
+		  ],
+		  "dataset": [
+			{
+			  "seriesname": "Humedad Aire",
+			  "data": cdata1
+			},
+			{
+			  "seriesname": "Humedad Suelo",
+			  "data": cdata3
+			},
+			{
+			  "seriesname": "Temperatura",
+			  "parentYAxis": "S",
+			  "data": cdata2
+			}
+		  ],
+			"trendlines": [{
+				"line": [{
+				"startvalue": "100",
+				"color": "#ff0000",
+				"displayvalue": "Temperatura critica",
+				"dashed": "1",
+				"valueOnRight": "1"
+				}]
+			}]
+        }
+    }).render();
+
+	
+	  var ref=data[6423]
+      var clabel = [];
+      var cdata1 = [];
+      var cdata2 = [];
+      var cdata3 = [];
+      var len = ref.length;
+      for(var i=1; i<len; i++) {
+		clabel.push({
+          label: ref[i]['fecha']
+        });
+		cdata1.push({
+          value: ref[i]['humedadaire']
+        });
+		cdata2.push({
+          value: ref[i]['temperatura']
+        });
+		cdata3.push({
+          value: ref[i]['humedadsuelo']
+        });
+      }
+	
+	
+	var firebaseChart2 = new FusionCharts({
+        type: "zoomlinedy",
+        renderAt: "chart2-container",
+		width: '100%',
+		height: '500',
+        dataFormat: 'json',
+        dataSource: {
+            "chart": {
+                "caption": "Invernadero 1",
+				"subcaption": "Click & drag on the plot area to zoom & then scroll",
+				"pYAxisName": "Humedad",
+				"pYAxisMaxValue": "100",
+				"pYAxisMinValue": "0",
+				"sYAxisName": "Temperatura",
+				"xaxisname": "Fecha",
+				"forceaxislimits": "1",
+				"pixelsperpoint": "0",
+				"pixelsperlabel": "30",
+				"compactdatamode": "1",
+				"numberSuffix": "%",				
+				"snumberSuffix": "°C",
+				"dataseparator": "|",
+				"theme": "fusion",
+				"bgImage":"https://i.imgur.com/hY3D8qN.png"
+            },
+            "categories": [
+			{
+			  "category": clabel
+			}
+		  ],
+		  "dataset": [
+			{
+			  "seriesname": "Humedad Aire",
+			  "data": cdata1
+			},
+			{
+			  "seriesname": "Humedad Suelo",
+			  "data": cdata3
+			},
+			{
+			  "seriesname": "Temperatura",
+			  "parentYAxis": "S",
+			  "data": cdata2
+			}
+		  ],
+			"trendlines": [{
+				"line": [{
+				"startvalue": "100",
+				"color": "#ff0000",
+				"displayvalue": "Temperatura critica",
+				"dashed": "1",
+				"valueOnRight": "1"
+				}]
+			}]
+		  
+        }
+    }).render();
+	
+	
+	
+    }
+    
+
+  </script>
+</head>
+
+<body>
+  <div id="chart1-container"><svg width="90px"  height="90px"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-rolling" style="background: none;"><circle cx="50" cy="50" fill="none" ng-attr-stroke="{{config.color}}" ng-attr-stroke-width="{{config.width}}" ng-attr-r="{{config.radius}}" ng-attr-stroke-dasharray="{{config.dasharray}}" stroke="#6ac1a5" stroke-width="9" r="33" stroke-dasharray="155.50883635269477 53.83627878423159" transform="rotate(324 50 50)"><animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform></circle></svg></div>
+  <div id="chart2-container"></div>
+</body>
+
+</html>
