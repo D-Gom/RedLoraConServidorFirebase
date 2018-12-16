@@ -23,7 +23,7 @@ config = {
 
 firebase = pyrebase.initialize_app(config)
 db = firebase.database()
-contador=1
+contador=db.child("invernaderos/5555/contadorultimo").get().val()
 while True:
     
     temperatura = randint(0,150)
@@ -38,7 +38,8 @@ while True:
     data = {"temperatura": temperatura, "humedadaire": humedadSuelo, "humedadsuelo": humedadAire, "fecha": fechaEspacios+horaDosPuntos}
 #    db.child("invernaderos/"+str(6423)+"/"+fecha+hora).update(data)
     db.child("invernaderos/"+str(5555)+"/"+str(contador)).update(data)
+    db.child("invernaderos/"+str(5555)).update({"contadorultimo": contador})
     contador+=1
     
-    time.sleep(30)
+    time.sleep(10)
 

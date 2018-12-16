@@ -165,7 +165,20 @@ def firebaseUpdate(idemisor,datos):
     humedadAire = float(datos[6:9])
     
     #####
+    
+    #listaNodos=db.child("invernaderos/lista").get().val()
+    
+    #if not idemisor in listaNodos:#busca si el nodo esta en la lista de nodos, si no esta en la lista lo agrega a esta
+    #    db.child("invernaderos/lista").update(listaNodos+"|"+idemisor)
+    #    db.child("invernaderos/"+idemisor+"contadorultimo").update(0)#crea un dato on la cantidad de datos del invernadero
+                
+    ###si fija cual es el ultimo lugar de la lista de datos y lo actualiza
+    contadorUltimo=db.child("invernaderos/"+idemisor+"contadorultimo").get().val()
+    nuevoUltimo=contadorUltimo+1
+    db.child("invernaderos/"+idemisor+"contadorultimo").update(nuevoUltimo)
+    #########
+    
     fecha = time.ctime()[20:24]+time.ctime()[4:7]+time.ctime()[8:10]
     hora =time.ctime()[11:13]+time.ctime()[14:16]
     data = {"temperatura": temperatura, "humedadaire": humedadSuelo, "humedadsuelo": humedadAire, "fecha": fecha+hora}
-    db.child("invernaderos/"+str(idemisor)+"/"+fecha+hora).update(data)
+    db.child("invernaderos/"+str(idemisor)+"/"+str(nuevoUltimo)).update(data)

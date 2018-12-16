@@ -23,12 +23,34 @@
     }
 
     function genFunction(data) {
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	  var ref=data[5555]
       var clabel = [];
       var cdata1 = [];
       var cdata2 = [];
       var cdata3 = [];
-      var len = ref.length;
+      var len = ref['contadorultimo'];
       for(var i=1; i<len; i++) {
 		clabel.push({
           label: ref[i]['fecha']
@@ -71,6 +93,66 @@
 				"theme": "fusion",
 				"bgImage":"https://i.imgur.com/hY3D8qN.png"
             },
+		  "annotations": {
+				"origw": "400",
+				"origh": "300",
+				"autoscale": "1",
+				"groups": [{
+				  "items": [{
+					"id": "high-labels-zone",
+					"type": "rectangle",
+					"x": "$yaxis.0.label.5.startx + 5",
+					"y": "$yaxis.0.label.5.starty",
+					"tox": "$yaxis.0.label.3.endx",
+					"toy": "$yaxis.0.label.3.starty",
+					"color": "#e44a00",
+					"alpha": "20",
+				  }, {
+					"id": "high-label",
+					"type": "text",
+					"text": "Alta",
+					"x": "$yaxis.0.label.4.startx - 5",
+					"y": "$yaxis.0.label.4.starty",
+					"rotateText": "1",
+					"color": "#e44a00"
+				  }, {
+					"id": "moderate-labels-zone",
+					"type": "rectangle",
+					"x": "$yaxis.0.label.3.startx + 5",
+					"y": "$yaxis.0.label.3.starty",
+					"tox": "$yaxis.0.label.2.endx",
+					"toy": "$yaxis.0.label.1.starty",
+					"color": "#6baa01",
+					"alpha": "20",
+				  }, {
+					"id": "moderate-label",
+					"type": "text",
+					"text": "Moderada",
+					"x": "$yaxis.0.label.2.startx - 5",
+					"y": "$yaxis.0.label.2.starty",
+					"rotateText": "1",
+					"color": "#6baa01"
+				  }, {
+					"id": "low-labels-zone",
+					"type": "rectangle",
+					"x": "$yaxis.0.label.1.startx - 3",
+					"y": "$yaxis.0.label.1.starty",
+					"tox": "$yaxis.0.label.0.endx",
+					"toy": "$yaxis.0.label.0.endy",
+					"color": "#4e76c9",
+					"alpha": "20",
+				  }, {
+					"id": "low-label",
+					"type": "text",
+					"text": "Baja",
+					"x": "$yaxis.0.label.1.startx - 12",
+					"y": "$yaxis.0.label.0.starty - 5",
+					"rotateText": "1",
+					"color": "#4e76c9"
+				  }]
+
+				}]
+		  },
             "categories": [
 			{
 			  "category": clabel
@@ -90,16 +172,7 @@
 			  "parentYAxis": "S",
 			  "data": cdata2
 			}
-		  ],
-			"trendlines": [{
-				"line": [{
-				"startvalue": "100",
-				"color": "#ff0000",
-				"displayvalue": "Temperatura critica",
-				"dashed": "1",
-				"valueOnRight": "1"
-				}]
-			}]
+		  ]
         }
     }).render();
 
@@ -109,7 +182,7 @@
       var cdata1 = [];
       var cdata2 = [];
       var cdata3 = [];
-      var len = ref.length;
+      var len = ref['contadorultimo'];
       for(var i=1; i<len; i++) {
 		clabel.push({
           label: ref[i]['fecha']
@@ -151,6 +224,66 @@
 				"theme": "fusion",
 				"bgImage":"https://i.imgur.com/hY3D8qN.png"
             },
+		  "annotations": {
+				"origw": "400",
+				"origh": "300",
+				"autoscale": "1",
+				"groups": [{
+				  "items": [{
+					"id": "high-labels-zone",
+					"type": "rectangle",
+					"x": "$yaxis.0.label.5.startx + 5",
+					"y": "$yaxis.0.label.5.starty",
+					"tox": "$yaxis.0.label.3.endx",
+					"toy": "$yaxis.0.label.3.starty",
+					"color": "#e44a00",
+					"alpha": "20",
+				  }, {
+					"id": "high-label",
+					"type": "text",
+					"text": "Alta",
+					"x": "$yaxis.0.label.4.startx - 5",
+					"y": "$yaxis.0.label.4.starty",
+					"rotateText": "1",
+					"color": "#e44a00"
+				  }, {
+					"id": "moderate-labels-zone",
+					"type": "rectangle",
+					"x": "$yaxis.0.label.3.startx + 5",
+					"y": "$yaxis.0.label.3.starty",
+					"tox": "$yaxis.0.label.2.endx",
+					"toy": "$yaxis.0.label.1.starty",
+					"color": "#6baa01",
+					"alpha": "20",
+				  }, {
+					"id": "moderate-label",
+					"type": "text",
+					"text": "Moderada",
+					"x": "$yaxis.0.label.2.startx - 5",
+					"y": "$yaxis.0.label.2.starty",
+					"rotateText": "1",
+					"color": "#6baa01"
+				  }, {
+					"id": "low-labels-zone",
+					"type": "rectangle",
+					"x": "$yaxis.0.label.1.startx - 3",
+					"y": "$yaxis.0.label.1.starty",
+					"tox": "$yaxis.0.label.0.endx",
+					"toy": "$yaxis.0.label.0.endy",
+					"color": "#4e76c9",
+					"alpha": "20",
+				  }, {
+					"id": "low-label",
+					"type": "text",
+					"text": "Baja",
+					"x": "$yaxis.0.label.1.startx - 12",
+					"y": "$yaxis.0.label.0.starty - 5",
+					"rotateText": "1",
+					"color": "#4e76c9"
+				  }]
+
+				}]
+		  },
             "categories": [
 			{
 			  "category": clabel
@@ -170,16 +303,7 @@
 			  "parentYAxis": "S",
 			  "data": cdata2
 			}
-		  ],
-			"trendlines": [{
-				"line": [{
-				"startvalue": "100",
-				"color": "#ff0000",
-				"displayvalue": "Temperatura critica",
-				"dashed": "1",
-				"valueOnRight": "1"
-				}]
-			}]
+		  ]
 		  
         }
     }).render();
